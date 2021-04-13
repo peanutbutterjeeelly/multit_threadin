@@ -33,6 +33,28 @@ ostream& operator<<(ostream& str, const vector<T>& vec)
     str << " >";
     return str;
 }
+vector<int> operator+(const vector<int>&order, const vector<int>& buffer_state){
+    //cout<< "order size is: "<<order.size()<<endl;
+    vector<int> res(order.size());
+    //res.resize(order.size());
+    for(int i=0;i<order.size();i++){
+        res[i]=order[i]+buffer_state[i];
+        cout<<res[i]<<endl;
+    }
+    //cout<<res;
+    return res;
+}
+vector<int> operator-(const vector<int>& buffer_state, const vector<int>&order){
+    vector<int> res(order.size());
+    //res.resize(order.size());
+    for(int i=0;i<order.size();i++){
+        res[i]=buffer_state[i]-order[i];
+        //cout<<res[i]<<endl;
+    }
+    //cout<<res;
+    return res;
+}
+
 int getSum(const vector<int>& vec){
     int sum=0;
     for(auto const& i:vec){
@@ -77,7 +99,13 @@ int main(){
 
 //    cout << someRandnumber<<endl;
     cout << "curr_Global_buffer is: "<<Global_buffer<<endl;
-
+    vector<int> a1{0,1,1};
+    vector<int> a2{2,2,2};
+    vector<int> adding_res=a1+a2;
+    cout << adding_res<<endl;
+    vector<int> minus_res=a1-a2;
+    cout<<minus_res<<endl;
+    //cout<<"adding is: "<<res<<endl;
 //    const int m = 20, n = 16; //m: number of Part Workers
 //n: number of Product Workers
 //m>n
