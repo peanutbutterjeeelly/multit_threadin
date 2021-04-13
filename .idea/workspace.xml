@@ -63,7 +63,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1618340082880</updated>
-      <workItem from="1618340084606" duration="6608000" />
+      <workItem from="1618340084606" duration="14220000" />
     </task>
     <task id="LOCAL-00001" summary="checking load">
       <created>1618346321210</created>
@@ -72,7 +72,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618346321210</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="overloaded operator+-">
+      <created>1618348293589</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1618348293589</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -80,7 +87,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="checking load" />
-    <option name="LAST_COMMIT_MESSAGE" value="checking load" />
+    <MESSAGE value="overloaded operator+-" />
+    <option name="LAST_COMMIT_MESSAGE" value="overloaded operator+-" />
   </component>
   <component name="WindowStateProjectService">
     <state x="577" y="354" key="Github.ShareDialog" timestamp="1618340197559">
@@ -91,25 +99,25 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="493" y="155" key="Github.UntrackedFilesDialog/0.0.1440.900@0.0.1440.900" timestamp="1618340207468" />
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1618347448185">
+    <state width="1398" height="148" key="GridCell.Tab.0.bottom" timestamp="1618355682580">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1618347448185" />
-    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1618347448184">
+    <state width="1398" height="148" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1618355682580" />
+    <state width="1398" height="148" key="GridCell.Tab.0.center" timestamp="1618355682579">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1618347448184" />
-    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1618347448183">
+    <state width="1398" height="148" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1618355682579" />
+    <state width="1398" height="148" key="GridCell.Tab.0.left" timestamp="1618355682578">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1618347448183" />
-    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1618347448185">
+    <state width="1398" height="148" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1618355682578" />
+    <state width="1398" height="148" key="GridCell.Tab.0.right" timestamp="1618355682580">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1618347448185" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1618346324944">
+    <state width="1398" height="148" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1618355682580" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1618348295412">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1618346324944" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1618348295412" />
   </component>
 </project>
