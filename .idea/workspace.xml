@@ -85,7 +85,7 @@
       <option name="presentableId" value="Default" />
       <updated>1618340082880</updated>
       <workItem from="1618340084606" duration="14220000" />
-      <workItem from="1618357768594" duration="15222000" />
+      <workItem from="1618357768594" duration="15674000" />
     </task>
     <task id="LOCAL-00001" summary="checking load">
       <created>1618346321210</created>
@@ -129,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618383821302</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="unique lock">
+      <created>1618435180822</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1618435180822</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,10 +189,11 @@
     </state>
     <state width="1398" height="148" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1618355682580" />
     <state width="1037" height="560" key="GridCell.Tab.0.right/0.0.1920.1040/1920.-504.1080.1880@1920.-504.1080.1880" timestamp="1618383511813" />
-    <state x="2160" y="-107" key="Vcs.Push.Dialog.v2" timestamp="1618383823050">
-      <screen x="1920" y="-504" width="1080" height="1880" />
+    <state x="427" y="220" key="Vcs.Push.Dialog.v2" timestamp="1618435181869">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1618348295412" />
+    <state x="427" y="220" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.-504.1080.1880@0.0.1920.1040" timestamp="1618435181869" />
     <state x="2160" y="-107" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.-504.1080.1880@1920.-504.1080.1880" timestamp="1618383823050" />
     <state x="2123" y="-69" width="672" height="678" key="search.everywhere.popup" timestamp="1618374692323">
       <screen x="1920" y="-504" width="1080" height="1880" />
