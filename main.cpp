@@ -16,8 +16,8 @@ const vector<int> move_time{20, 20, 30, 30,40};
 const vector<int> prodW_assemble_time{60, 60, 70, 70, 80};
 mutex m1;
 condition_variable partW, productW;
-bool is_initial_state(const vector<int>&Global_buffer){//check whether if it's 0,0,0,0,0
-    for(auto const& item:Global_buffer){
+bool is_initial_state(const vector<int>&vec){//check whether if it's 0,0,0,0,0
+    for(auto const& item:vec){
         if(item!=0){
             return false;
         }
@@ -105,6 +105,17 @@ vector<int> generate_pickup_order(vector<int>& order){
     }
     return order;
 }
+bool is_theSame(const vector<int>&vec1, const vector<int>&vec2){
+	if(vec1.size()!=vec2.size()){
+		return false;
+	}
+	for (int i = 0; i<vec1.size(); i++) {
+		if(vec1[i]!=vec2[i]){
+			return false;
+		}
+	}
+	return true;
+}
 bool is_overFlow(const vector<int>& order, const vector<int>& buffer_state){
     vector<int> res=order+buffer_state;
     for(int i=0;i<order.size();i++){
@@ -128,6 +139,7 @@ void part_worker(int thread_id) {
 	unique_lock<mutex> u1(m1);
 	cout << "part_worker: " << thread_id << " running" << endl;
     vector<int> curr_loadOrder=generate_load_order(load_order);
+
 	vector<int> tmp;
 	cout << "before load Global buffer is: " << Global_buffer << endl;
     cout <<"before curr_loadOrder is: " <<curr_loadOrder<<endl;
@@ -168,6 +180,9 @@ void product_worker(int thread_id) {
 	cout << "before global_buffer is: " << Global_buffer << endl;
 	vector<int> tmp;
 	if(is_notEnough(Global_buffer,curr_pickupOrder)==false){
+		//ideal situation
+		//...
+		//...
 		Global_buffer = Global_buffer-curr_pickupOrder;
 		curr_pickupOrder={0,0,0,0,0};
 	}
