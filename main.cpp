@@ -125,9 +125,12 @@ bool is_notEnough(const vector<int>& buffer_state, const vector<int>& order){
 }
 
 void part_worker(int thread_id) {
+	unique_lock<mutex> u1(m1);
+	cout << "part_worker: " << thread_id << " running" << endl;
     vector<int> curr_loadOrder=generate_load_order(load_order);
 	vector<int> tmp;
-    //cout <<"curr_loadOrder is: " <<curr_loadOrder<<endl;
+	cout << "before load Global buffer is: " << Global_buffer << endl;
+    cout <<"before curr_loadOrder is: " <<curr_loadOrder<<endl;
     if(is_overFlow(Global_buffer,curr_loadOrder)==false){//no overflow, direct merge two
 		Global_buffer = Global_buffer+curr_loadOrder;
 		curr_loadOrder={0,0,0,0,0};
@@ -150,14 +153,19 @@ void part_worker(int thread_id) {
 		//cout << "tmp is: " << tmp << endl;
     }
 	load_order = curr_loadOrder;
+	cout << "after load Global buffer is: " << Global_buffer << endl;
+	cout <<"after curr_loadOrder is: " <<curr_loadOrder<<endl<<endl;
 
 
 
 }
 
 void product_worker(int thread_id) {
+	unique_lock<mutex> u1(m1);
+	cout << "product_worker: " << thread_id << " running" << endl;
     vector<int> curr_pickupOrder=generate_pickup_order(pickup_order);
-    cout<<"curr_pickupOrder is: "<<curr_pickupOrder<<endl;
+    cout<<"before curr_pickupOrder is: "<<curr_pickupOrder<<endl;
+	cout << "before global_buffer is: " << Global_buffer << endl;
 	vector<int> tmp;
 	if(is_notEnough(Global_buffer,curr_pickupOrder)==false){
 		Global_buffer = Global_buffer-curr_pickupOrder;
@@ -165,7 +173,7 @@ void product_worker(int thread_id) {
 	}
 	else{//some pickup order cannot be fulfilled
 		tmp = Global_buffer-curr_pickupOrder;
-		cout << "tmp is: " << tmp << endl;
+		//cout << "tmp is: " << tmp << endl;
 		for (int i = 0; i<5;i++) {
 			if(tmp[i]<0){
 				Global_buffer[i] = 0;
@@ -178,23 +186,25 @@ void product_worker(int thread_id) {
 		}
 	}
 	pickup_order = curr_pickupOrder;
+	cout<<"after curr_pickupOrder is: "<<pickup_order<<endl;
+	cout << "after global_buffer is: " << Global_buffer << endl<<endl;
 
 }
 
 
 
 int main(){
-	cout << "curr_loadorder: " << load_order << endl;
-	cout <<"Global: " <<Global_buffer << endl;
-	cout << "curr_pickup: " << pickup_order << endl<<endl;
-    part_worker(1);
-	cout << "curr_loadorder: " << load_order << endl;
-	cout <<"Global: " <<Global_buffer << endl;
-	cout << "curr_pickup: " << pickup_order << endl<<endl;
-    product_worker(2);
-	cout << "curr_loadorder: " << load_order << endl;
-	cout <<"Global: " <<Global_buffer << endl;
-	cout << "curr_pickup: " << pickup_order << endl<<endl;
+//	cout << "curr_loadorder: " << load_order << endl;
+//	cout <<"Global: " <<Global_buffer << endl;
+//	cout << "curr_pickup: " << pickup_order << endl<<endl;
+//    part_worker(1);
+//	cout << "curr_loadorder: " << load_order << endl;
+//	cout <<"Global: " <<Global_buffer << endl;
+//	cout << "curr_pickup: " << pickup_order << endl<<endl;
+//    product_worker(2);
+//	cout << "curr_loadorder: " << load_order << endl;
+//	cout <<"Global: " <<Global_buffer << endl;
+//	cout << "curr_pickup: " << pickup_order << endl<<endl;
 //    vector<int> try_generate_load_order=generate_order(load_order);
 //    cout<<"try generate load order: " <<try_generate_load_order<<endl;
 //    cout<< is_initial_state(Global_buffer)<<endl;
