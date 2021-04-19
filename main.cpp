@@ -138,19 +138,36 @@ bool is_notEnough(const vector<int>& buffer_state, const vector<int>& order){
 void part_worker(int thread_id) {
 	unique_lock<mutex> u1(m1);
 	cout << "part_worker: " << thread_id << " running" << endl;
+
+	vector<int> save_loadOrder = load_order;
+	cout << "is theSame? loadOrder: " << save_loadOrder << endl;
     vector<int> curr_loadOrder=generate_load_order(load_order);
 
+	cout << "is theSame? curr_loadOrder: " << curr_loadOrder << endl;
+	for (int i = 0; i<5;i++) {
+		//manufacture parts?
+		if(curr_loadOrder[i]!=save_loadOrder[i]){
+			int sleep_time = (curr_loadOrder[i]-save_loadOrder[i])*partW_manufacture_time[i];
+			cout << sleep_time << endl;
+			this_thread::sleep_for(chrono::microseconds(sleep_time));
+		}
+	}
+
 	vector<int> tmp;
-	cout << "before load Global buffer is: " << Global_buffer << endl;
-    cout <<"before curr_loadOrder is: " <<curr_loadOrder<<endl;
+	cout << "Load Order: " << load_order << endl;
+	cout << "Buffer State: " << Global_buffer << endl;
     if(is_overFlow(Global_buffer,curr_loadOrder)==false){//no overflow, direct merge two
 		Global_buffer = Global_buffer+curr_loadOrder;
+		for (int i = 0; i<5;i++) {//caculate move_time
+			if(curr_loadOrder[i]!=0){
+				int sleep_time = curr_loadOrder[i]*move_time[i];
+				this_thread::sleep_for(chrono::microseconds(sleep_time));
+			}
+		}
 		curr_loadOrder={0,0,0,0,0};
     }
     else{//overflow happens
-		//cout << "global buffer: " << Global_buffer << endl;
 		tmp = curr_loadOrder+Global_buffer;
-		//cout << "tmp is: " << tmp << endl;
 		for (int i = 0; i<5;i++) {
 			if(tmp[i]>restraints[i]){
 				Global_buffer[i] = restraints[i];
@@ -161,13 +178,12 @@ void part_worker(int thread_id) {
 				curr_loadOrder[i] = 0;
 			}
 		}
-
-		//cout << "tmp is: " << tmp << endl;
     }
 	load_order = curr_loadOrder;
-	cout << "after load Global buffer is: " << Global_buffer << endl;
-	cout <<"after curr_loadOrder is: " <<curr_loadOrder<<endl<<endl;
-	//
+
+	cout << "Updated Buffer State: " << Global_buffer << endl;
+	cout << "Update Load Order: " << load_order << endl;
+	cout << endl;
 
 
 }
@@ -175,7 +191,18 @@ void part_worker(int thread_id) {
 void product_worker(int thread_id) {
 	unique_lock<mutex> u1(m1);
 	cout << "product_worker: " << thread_id << " running" << endl;
+	cout << "is theSame?: " << pickup_order << endl;
+	vector<int> save_pickupOrder = pickup_order;
     vector<int> curr_pickupOrder=generate_pickup_order(pickup_order);
+	cout << "is theSame?: " << curr_pickupOrder << endl;
+	for (int i = 0; i<5;i++) {
+		//calculate assemble time
+		if(save_pickupOrder[i]!=curr_pickupOrder[i]){
+			int sleep_time = (curr_pickupOrder[i]-save_pickupOrder[i])*prodW_assemble_time[i];
+			cout << sleep_time << endl;
+			this_thread::sleep_for(std::chrono::microseconds (sleep_time));
+		}
+	}
     cout<<"before curr_pickupOrder is: "<<curr_pickupOrder<<endl;
 	cout << "before global_buffer is: " << Global_buffer << endl;
 	vector<int> tmp;
